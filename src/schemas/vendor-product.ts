@@ -6,11 +6,11 @@ import { vendorSchema } from "./vendor";
 export const deliverySlotSchem = z.object({
   label: z.string().nonempty("Label is required"), // Custom error message for label field
   price: z.number().min(0, "Price must be a positive number"), // Custom error message for price
-  deliveryTimeStartDate: z.number().min(1, "Invalid start date"), // Custom error message for date
+  deliveryTimeStartDate: z.number().min(0, "Invalid start date"), // Custom error message for date
   deliveryTimeStartTime: z.string().regex(/^\d{1,2}:\d{2}$/, {
     message: "Invalid time format (expected HH:MM)",
   }), // Custom error message for time format
-  deliveryTimeEndDate: z.number().min(1, "Invalid end date"), // Custom error message for date
+  deliveryTimeEndDate: z.number().min(0, "Invalid end date"), // Custom error message for date
   deliveryTimeEndTime: z.string().regex(/^\d{1,2}:\d{2}$/, {
     message: "Invalid time format (expected HH:MM)",
   }), // Custom error message for time format
