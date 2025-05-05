@@ -54,15 +54,8 @@ export const vendorProductSchema = z.object({
 export const VendorProductFormSchema = z.object({
   vendorProducts: z.array(
     vendorProductSchema.omit({ product: true, vendor: true, id: true }).extend({
-      productId: z
-        .string()
-        .nonempty("Product ID is required") // Custom message for productId
-        .min(1, "Product ID cannot be empty"), // Custom message for productId
-
-      vendorId: z
-        .string()
-        .nonempty("Vendor ID is required") // Custom message for vendorId
-        .min(1, "Vendor ID cannot be empty"), // Custom message for vendorId
+      vendorId: z.string().regex(/^[a-f\d]{24}$/i, "Invalid MongoDB ObjectId"),
+      productId: z.string().regex(/^[a-f\d]{24}$/i, "Invalid MongoDB ObjectId"),
     })
   ),
 });
