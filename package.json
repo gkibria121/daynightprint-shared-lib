@@ -1,6 +1,6 @@
 {
   "name": "@daynightprint/shared",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Shared utilities, types, and schemas used across the organization's apps and services.",
   "homepage": "https://github.com/gkibria121/price-engine-micro#readme",
   "bugs": {
