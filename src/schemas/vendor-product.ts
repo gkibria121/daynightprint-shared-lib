@@ -93,7 +93,7 @@ export const pricingRuleSchema = z.object({
       .nonempty("Price is required"),
     z.number({ invalid_type_error: "Price must be a number" }),
   ]),
-  isDefault: z.boolean().default(false).optional(),
+  isDefault: z.boolean().default(false),
 });
 
 // Vendor Product Schema with validation messages
