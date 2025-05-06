@@ -114,7 +114,7 @@ export const vendorProductSchema = z.object({
   quantityPricings: z
     .array(quantityPricingSchema)
     .min(1, { message: "At least one quantity pricing is required" }),
-  pricingRuleOptions: z.array(pricingRuleOptionSchema),
+  pricingRuleOptions: z.array(pricingRuleOptionSchema).optional(),
 });
 // Vendor Product Form Schema with validation messages
 export const VendorProductFormSchema = z.object({
