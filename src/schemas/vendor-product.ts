@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { productSchema } from "./product";
 import { vendorSchema } from "./vendor";
+import { pricingRuleOptionSchema } from "./pricing-rule-options";
 
 // Delivery Slot Schema with validation messages
 export const deliverySlotSchem = z.object({
@@ -113,6 +114,7 @@ export const vendorProductSchema = z.object({
   quantityPricings: z
     .array(quantityPricingSchema)
     .min(1, { message: "At least one quantity pricing is required" }),
+  pricingRuleOptions: z.array(pricingRuleOptionSchema),
 });
 // Vendor Product Form Schema with validation messages
 export const VendorProductFormSchema = z.object({
