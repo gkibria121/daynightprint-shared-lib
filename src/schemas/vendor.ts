@@ -32,7 +32,7 @@ export const vendorFormSchema = z.object({
       },
       {
         message: "Vendor emails must be unique",
-        path: ["vendors"], // This will mark the entire vendors array as invalid
+        path: [], // This will mark the entire vendors array as invalid
       }
     ),
 });
