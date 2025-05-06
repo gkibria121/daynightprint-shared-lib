@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const pricingRuleOptionSchema = z.object({
   attribute: z
-    .string()
+    .string({ required_error: "Attribute name is required" })
     .min(1, {
       message: "Attribute name is required and cannot be empty.",
     })
@@ -17,9 +17,11 @@ export const pricingRuleOptionSchema = z.object({
 
   values: z
     .array(
-      z.string().min(1, {
-        message: "Each value must be a non-empty string.",
-      }),
+      z
+        .string({ required_error: "Each value must be a non-empty string." })
+        .min(1, {
+          message: "Each value must be a non-empty string.",
+        }),
       {
         invalid_type_error: "Values must be an array of strings.",
       }
@@ -30,7 +32,7 @@ export const pricingRuleOptionSchema = z.object({
     .describe("A list of allowed string values for selection."),
 
   inputType: z
-    .string()
+    .string({ required_error: "Input type is required." })
     .min(1, {
       message: "Input type is required.",
     })
