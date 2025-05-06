@@ -17,5 +17,22 @@ export const vendorSchema = z.object({
 export const vendorFormSchema = z.object({
   vendors: z
     .array(vendorSchema.omit({ id: true }))
-    .min(1, "At least one vendor must be provided"),
+    .min(1, "At least one vendor must be provided")
+    .refine(
+      (vendors) => {
+        // Create a set of vendor names to check for duplicates
+        const emails = new Set();
+        for (const vendor of vendors) {
+          if (emails.has(vendor.email)) {
+            return false; // Duplicate found
+          }
+          emails.add(vendor.email);
+        }
+        return true; // All emails are unique
+      },
+      {
+        message: "Vendor emails must be unique",
+        path: ["vendors"], // This will mark the entire vendors array as invalid
+      }
+    ),
 });
