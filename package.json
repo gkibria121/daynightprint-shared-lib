@@ -21,6 +21,7 @@
   "scripts": {
     "build": "tsup src/index.ts --dts --format esm,cjs --out-dir dist",
     "dev": "tsup src/index.ts --watch",
+    "pub" : "npm run build && npm run version patch && npm publish --access public",
     "clean": "rm -rf dist"
   },
   "dependencies": {
