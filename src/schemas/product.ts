@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const productSchema = z.object({
   id: z.string().nonempty(),
-  name: z.string().nonempty("This field is required"),
+  name: z.string({ required_error: "This field is required" }),
 });
 
 export const bulkProductsSchema = z
